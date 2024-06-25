@@ -1,9 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Mon Jun 24 16:26:33 2024
-
-@author: ASUS
-"""
+import os
 import pickle
 import streamlit as st
 from streamlit_option_menu import option_menu
@@ -13,8 +9,14 @@ st.set_page_config(page_title="Diagnose AI",
                    layout="wide",
                    page_icon="🧑‍⚕️")
 
+working_dir = os.path.dirname(os.path.abspath(__file__))
+
+# paths to models
+path1 = diabetes_model_path = f"{working_dir}/saved models/diabetes_model.sav"
+
 # loading the saved models
-diabetes_model = pickle.load(open('../saved models/diabetes_model.sav','rb'))
+with open(diabetes_model_path, 'rb') as f:
+    diabetes_model = pickle.load(f)
 heart_disease_model = pickle.load(open('../saved models/heart_model.sav','rb'))
 parkinsons_model = pickle.load(open('../saved models/parkinsons_model.sav','rb'))
 
