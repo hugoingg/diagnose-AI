@@ -4,7 +4,6 @@ Created on Mon Jun 24 16:26:33 2024
 
 @author: ASUS
 """
-import os
 import pickle
 import streamlit as st
 from streamlit_option_menu import option_menu
@@ -13,12 +12,11 @@ from streamlit_option_menu import option_menu
 st.set_page_config(page_title="Diagnose AI",
                    layout="wide",
                    page_icon="🧑‍⚕️")
-working_dir = os.path.dirname(os.path.abspath(__file__))
 
 # loading the saved models
-diabetes_model = pickle.load(open(f'{working_dir}/saved models/diabetes_model.sav','rb'))
-heart_disease_model = pickle.load(open(f'{working_dir}/saved models/heart_model.sav','rb'))
-parkinsons_model = pickle.load(open(f'{working_dir}/saved models/parkinsons_model.sav','rb'))
+diabetes_model = pickle.load(open('./saved models/diabetes_model.sav','rb'))
+heart_disease_model = pickle.load(open('./saved models/heart_model.sav','rb'))
+parkinsons_model = pickle.load(open('./saved models/parkinsons_model.sav','rb'))
 
 # sidebar for navigation
 with st.sidebar:
