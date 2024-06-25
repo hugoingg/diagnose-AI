@@ -10,17 +10,12 @@ st.set_page_config(page_title="Diagnose AI",
                    page_icon="🧑‍⚕️")
 
 # Get the directory where this script is located
-current_dir = os.path.dirname(os.path.abspath(__file__))
-
-# Define paths relative to the current directory
-diabetes_model_path = os.path.join(current_dir, 'saved models', 'diabetes_model.sav')
-heart_model_path = os.path.join(current_dir, '..', 'saved models', 'heart_model.sav')
-parkinsons_model_path = os.path.join(current_dir, '..', 'saved models', 'parkinsons_model.sav')
+working_dir = os.path.dirname(os.path.abspath(__file__))
 
 # loading the saved models
-diabetes_model = pickle.load(open(diabetes_model_path, 'rb'))
-heart_disease_model = pickle.load(open('../saved models/heart_model.sav','rb'))
-parkinsons_model = pickle.load(open('../saved models/parkinsons_model.sav','rb'))
+diabetes_model = pickle.load(open(f'{working_dir}/saved models/diabetes_model.sav','rb'))
+heart_disease_model = pickle.load(open(f'{working_dir}/saved models/heart_model.sav','rb'))
+parkinsons_model = pickle.load(open(f'{working_dir}/saved models/parkinsons_model.sav','rb'))
 
 # sidebar for navigation
 with st.sidebar:
