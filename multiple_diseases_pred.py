@@ -9,7 +9,7 @@ st.set_page_config(page_title="Diagnose AI",
                    layout="wide",
                    page_icon="🧑‍⚕️")
 
-working_dir = os.path.dirname(os.path.abspath(__file__))
+current_dir = os.path.dirname(os.path.abspath(__file__))
 
 # loading the saved models
 diabetes_model = pickle.load(open(os.path.join(current_dir, 'saved_models', 'diabetes_model.sav'), 'rb'))
