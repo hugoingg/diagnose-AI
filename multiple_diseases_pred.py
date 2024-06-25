@@ -11,12 +11,8 @@ st.set_page_config(page_title="Diagnose AI",
 
 working_dir = os.path.dirname(os.path.abspath(__file__))
 
-# paths to models
-path1 = diabetes_model_path = f"{working_dir}/saved models/diabetes_model.sav"
-
 # loading the saved models
-with open(diabetes_model_path, 'rb') as f:
-    diabetes_model = pickle.load(f)
+diabetes_model = pickle.load(open(f'{working_dir}/saved_models/diabetes_model.sav', 'rb'))
 heart_disease_model = pickle.load(open('../saved models/heart_model.sav','rb'))
 parkinsons_model = pickle.load(open('../saved models/parkinsons_model.sav','rb'))
 
