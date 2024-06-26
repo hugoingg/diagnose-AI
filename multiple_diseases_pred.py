@@ -54,7 +54,9 @@ if(selected == 'Diabetes'):
     
     # creating a button for prediction
     if st.button("Diabetes Test Result"):
-        diab_prediction = diabetes_model.predict([[Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age]])
+        user_input = [Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age]
+        user_input = [float(x) for x in user_input]
+        diab_prediction = diabetes_model.predict([user_input])
         if(diab_prediction[0] == 0):
             diab_diagnosis = "Patient is Not Diabetic"
         else:
@@ -63,36 +65,38 @@ if(selected == 'Diabetes'):
     
 if(selected=='Heart Disease'):
     st.title("Heart Disease Prediction using ML")
-    col1, col2 = st.columns(2)
+    col1, col2, col3 = st.columns(3)
     with col1:
         age = st.text_input("Patient's Age")
     with col2:
         sex = st.text_input("Patient's Sex")
-    with col1:
+    with col3:
         cp = st.text_input("Chest Pain Type")
-    with col2:
-        trestbps = st.text_input("Resting Blood Pressure")
     with col1:
-        chol = st.text_input("Serum Cholestoral in mg/dl")
+        trestbps = st.text_input("Resting Blood Pressure")
     with col2:
+        chol = st.text_input("Serum Cholestoral in mg/dl")
+    with col3:
         fbs = st.text_input("Fasting Blood Sugar")
     with col1:
         restecg = st.text_input("Resting Electrocardiographic")
     with col2:
         thalach = st.text_input("Max Heart Rate")
-    with col1:
+    with col3:
         exang = st.text_input("Exercise-Induced Angina")
-    with col2:
-        oldpeak = st.text_input("ST Depression Induced by Exercise")
     with col1:
-        slope = st.text_input("Slope of Peak Exercise ST Segment")
+        oldpeak = st.text_input("ST Depression Induced by Exercise")
     with col2:
+        slope = st.text_input("Slope of Peak Exercise ST Segment")
+    with col3:
         ca = st.text_input("Number of Major Vessels (0-3)")
     thal = st.text_input("Thalassemia - 0 = normal, 1 = fixed defect, 2 = reversable defect")
     
     hd_diagnosis = ''
     if st.button("Heart Disease Test Result"):
-        hd_prediction = heart_disease_model.predict([[age, sex, cp, trestbps, chol, fbs, restecg, thalach, exang, oldpeak, slope, ca, thal]])
+        user_input = [age, sex, cp, trestbps, chol, fbs, restecg, thalach, exang, oldpeak, slope, ca, thal]
+        user_input = [float(x) for x in user_input]
+        hd_prediction = heart_disease_model.predict([user_input])
         if(hd_prediction[0] == 0):
             hd_diagnosis = "Patient does Not Have Heart Disease"
         else:
@@ -153,9 +157,11 @@ if(selected=="Parkinson's Disease"):
         
     pd_diagnosis = ''
     if st.button("Parkinson's Disease Test Result"):
-        pd_prediction = parkinsons_model.predict([[fo,fhi,flo,Jitter_P,Jitter_Abs,RAP,
-                                                   PPQ,Jitter_DDP,Shimmer,Shimmer_dB,Shimmer_APQ3,Shimmer_APQ5,
-                                                   APQ,Shimmer_DDA,NHR,HNR,RDPE,DFA,spread1,spread2,D2,PPE]])
+        user_input = [fo,fhi,flo,Jitter_P,Jitter_Abs,RAP,
+                      PPQ,Jitter_DDP,Shimmer,Shimmer_dB,Shimmer_APQ3,Shimmer_APQ5,
+                      APQ,Shimmer_DDA,NHR,HNR,RDPE,DFA,spread1,spread2,D2,PPE]
+        user_input = [float(x) for x in user_input]
+        pd_prediction = parkinsons_model.predict([user_input])
         if(pd_prediction[0] == 0):
             pd_diagnosis = "Patient does Not Have Parkinson's Disease"
         else:
