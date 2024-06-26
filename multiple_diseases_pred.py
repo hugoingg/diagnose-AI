@@ -88,7 +88,7 @@ if(selected=='Heart Disease'):
         slope = st.text_input("Slope of Peak Exercise ST Segment")
     with col3:
         ca = st.text_input("Number of Major Vessels (0-3)")
-    thal = st.text_input("Thalassemia (0 = normal, 1 = fixed defect, 2 = reversable defect)")
+    thal = st.text_input("Thalassemia - 0 = normal, 1 = fixed defect, 2 = reversable defect")
     
     hd_diagnosis = ''
     if st.button("Heart Disease Test Result"):
@@ -102,7 +102,7 @@ if(selected=='Heart Disease'):
     
 if(selected=="Parkinson's Disease"):
     st.title("Parkinson's Disease Prediction using ML")
-    col1, col2, col3 = st.columns(3)
+    col1, col2, col3 = st.columns(4)
     
     with col1:
         fo = st.text_input("MDVP Fo in Hz")
@@ -110,23 +110,23 @@ if(selected=="Parkinson's Disease"):
         fhi = st.text_input("MDVP Fhi in Hz")
     with col3:
         flo = st.text_input("MDVP Flo in Hz")
-    with col1:
+    with col4:
         Jitter_P = st.text_input("MDVP Jitter in %")
-    with col2:
+    with col1:
         Jitter_Abs = st.text_input("MDVP Jitter in Abs")
-    with col3:
+    with col2:
         RAP = st.text_input("MDVP RAP")
-    with col1:
+    with col3:
         PPQ = st.text_input("MDVP PPQ")
-    with col2:
+    with col4:
         Jitter_DDP = st.text_input("Jitter DDP")
-    with col3:
-        Shimmer = st.text_input("MDVP Shimmer")
     with col1:
-        Shimmer_dB = st.text_input("MDVP Shimmer in dB")
+        Shimmer = st.text_input("MDVP Shimmer")
     with col2:
-        Shimmer_APQ3 = st.text_input("Shimmer APQ3")
+        Shimmer_dB = st.text_input("MDVP Shimmer in dB")
     with col3:
+        Shimmer_APQ3 = st.text_input("Shimmer APQ3")
+    with col4:
         Shimmer_APQ5 = st.text_input("Shimmer APQ5")
     with col1:
         APQ = st.text_input("MDVP APQ")
@@ -134,28 +134,28 @@ if(selected=="Parkinson's Disease"):
         Shimmer_DDA = st.text_input("Shimmer DDA")
     with col3:
         NHR = st.text_input("NHR")
-    with col1:
+    with col4:
         HNR = st.text_input("HNR")
-    with col2:
+    with col1:
         status = st.text_input("status")
-    with col3:
+    with col2:
         RDPE = st.text_input("RDPE")
-    with col1:
-        DFA = st.text_input("DFA")
-    with col2:
-        spread1 = st.text_input("spread1")
     with col3:
-        spread2 = st.text_input("spread2")
+        DFA = st.text_input("DFA")
+    with col4:
+        spread1 = st.text_input("spread1")
     with col1:
-        D2 = st.text_input("D2")
+        spread2 = st.text_input("spread2")
     with col2:
+        D2 = st.text_input("D2")
+    with col3:
         PPE = st.text_input("PPE")
         
     pd_diagnosis = ''
     if st.button("Parkinson's Disease Test Result"):
         pd_prediction = parkinsons_model.predict([[fo,fhi,flo,Jitter_P,Jitter_Abs,RAP,
                                                    PPQ,Jitter_DDP,Shimmer,Shimmer_dB,Shimmer_APQ3,Shimmer_APQ5,
-                                                   APQ,Shimmer_DDA,NHR,HNR,RPDE,DFA,spread1,spread2,D2,PPE]])
+                                                   APQ,Shimmer_DDA,NHR,HNR,RDPE,DFA,spread1,spread2,D2,PPE]])
         if(pd_prediction[0] == 0):
             pd_diagnosis = "Patient does Not Have Parkinson's Disease"
         else:
