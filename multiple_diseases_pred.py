@@ -63,36 +63,36 @@ if(selected == 'Diabetes'):
     
 if(selected=='Heart Disease'):
     st.title("Heart Disease Prediction using ML")
-    col1, col2, col3 = st.columns(3)
+    col1, col2 = st.columns(2)
     with col1:
         age = st.text_input("Patient's Age")
     with col2:
         sex = st.text_input("Patient's Sex")
-    with col3:
-        cp = st.text_input("Chest Pain Type")
     with col1:
-        trestbps = st.text_input("Resting Blood Pressure")
+        cp = st.text_input("Chest Pain Type")
     with col2:
+        trestbps = st.text_input("Resting Blood Pressure")
+    with col1:
         chol = st.text_input("Serum Cholestoral in mg/dl")
-    with col3:
+    with col2:
         fbs = st.text_input("Fasting Blood Sugar")
     with col1:
         restecg = st.text_input("Resting Electrocardiographic")
     with col2:
         thalach = st.text_input("Max Heart Rate")
-    with col3:
-        exang = st.text_input("Exercise-Induced Angina")
     with col1:
-        oldpeak = st.text_input("ST Depression Induced by Exercise")
+        exang = st.text_input("Exercise-Induced Angina")
     with col2:
+        oldpeak = st.text_input("ST Depression Induced by Exercise")
+    with col1:
         slope = st.text_input("Slope of Peak Exercise ST Segment")
-    with col3:
+    with col2:
         ca = st.text_input("Number of Major Vessels (0-3)")
     thal = st.text_input("Thalassemia - 0 = normal, 1 = fixed defect, 2 = reversable defect")
     
     hd_diagnosis = ''
     if st.button("Heart Disease Test Result"):
-        hd_prediction = heart_disease_model.predict([[age, sex, cp, trestbps,chol,fbs,restecg,thalach,exang,oldpeak,slope,ca,thal]])
+        hd_prediction = heart_disease_model.predict([[age, sex, cp, trestbps, chol, fbs, restecg, thalach, exang, oldpeak, slope, ca, thal]])
         if(hd_prediction[0] == 0):
             hd_diagnosis = "Patient does Not Have Heart Disease"
         else:
@@ -123,7 +123,7 @@ if(selected=="Parkinson's Disease"):
     with col1:
         Shimmer = st.text_input("MDVP Shimmer")
     with col2:
-        Shimmer_dB = st.text_input("MDVP Shimmer in dB")
+        Shimmer_dB = st.text_input("MDVP Shimmer dB")
     with col3:
         Shimmer_APQ3 = st.text_input("Shimmer APQ3")
     with col4:
