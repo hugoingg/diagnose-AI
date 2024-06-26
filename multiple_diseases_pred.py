@@ -102,7 +102,7 @@ if(selected=='Heart Disease'):
     
 if(selected=="Parkinson's Disease"):
     st.title("Parkinson's Disease Prediction using ML")
-    col1, col2, col3 = st.columns(4)
+    col1, col2, col3, col4= st.columns(4)
     
     with col1:
         fo = st.text_input("MDVP Fo in Hz")
